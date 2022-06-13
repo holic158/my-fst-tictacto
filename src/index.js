@@ -1,5 +1,7 @@
+import { StrictMode } from 'react';
 import React from 'react';
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom'; // wrong import path
+import {createRoot} from 'react-dom/client';
 import './index.css';
 
 function Square(props) {
@@ -124,9 +126,13 @@ class Game extends React.Component {
 }
   
   // ========================================
-  
-  const root = ReactDOM.createRoot(document.getElementById("root"));
-  root.render(<Game />);
+  const rooElement = document.getElementById('root');
+  const root = createRoot(rooElement);
+  root.render(
+    <StrictMode>
+      <Game />
+    </StrictMode>
+  );
   
   function calculateWinner(squares) {
     const lines = [
